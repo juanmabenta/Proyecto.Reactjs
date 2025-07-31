@@ -1,0 +1,1 @@
+.navbar{display:flex;justify-content:space-between;align-items:center;padding:1rem 2rem;background-color:#222;color:#fff;font-family:Segoe UI,sans-serif}.navbar-title{font-weight:700;font-size:1.5rem}.navbar nav{display:flex;gap:1.5rem}.navbar nav a{color:#ddd;text-decoration:none;transition:color .2s ease-in-out}.navbar nav a:hover{color:#fff}
