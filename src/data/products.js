@@ -1,42 +1,68 @@
 // src/data/products.js
-
-// Array de productos de ejemplo (personalizalo con los tuyos)
+// Importo las imágenes locales
+import prenda1 from '../assets/prenda1.jpg'
+import prenda2 from '../assets/prenda2.jpg'
+import prenda3 from '../assets/prenda3.jpg'
+import prenda4 from '../assets/prenda4.jpg'
+import prenda5 from '../assets/prenda5.jpg'
+import prenda6 from '../assets/prenda6.jpg'
 const _products = [
+  // REMERAS
   {
     id: 'r1',
-    title: 'Remera Oversize',
+    title: 'Remera gris estmpada',
     price: 1290,
     stock: 12,
     category: 'remeras',
-    thumbnail: 'https://picsum.photos/seed/r1/400/300'
+    thumbnail: prenda1
   },
   {
     id: 'r2',
-    title: 'Remera Básica',
+    title: 'remera negra',
     price: 990,
     stock: 20,
     category: 'remeras',
-    thumbnail: 'https://picsum.photos/seed/r2/400/300'
+    thumbnail: prenda5
   },
+
+  // PANTALONES
   {
     id: 'p1',
-    title: 'Pantalón Cargo',
+    title: 'Pantalon marron',
     price: 2590,
     stock: 8,
     category: 'pantalones',
-    thumbnail: 'https://picsum.photos/seed/p1/400/300'
+    thumbnail: prenda4
   },
   {
+    id: 'p2',
+    title: 'Pantalon negro',
+    price: 2890,
+    stock: 10,
+    category: 'pantalones',
+    thumbnail: prenda2
+  },
+
+  // ACCESORIOS
+  {
     id: 'a1',
-    title: 'Gorra Clásica',
+    title: 'Gorra azul',
     price: 690,
     stock: 30,
     category: 'accesorios',
-    thumbnail: 'https://picsum.photos/seed/a1/400/300'
+    thumbnail: prenda6
+  },
+  {
+    id: 'a2',
+    title: 'Cinturon negro',
+    price: 1590,
+    stock: 14,
+    category: 'accesorios',
+    thumbnail: prenda3
   }
 ]
 
-// helper para simular retardo
+// Helpers y exports (igual que antes)
 const delay = (ms) => new Promise(res => setTimeout(res, ms))
 
 export async function getProducts() {

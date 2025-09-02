@@ -1,24 +1,97 @@
-/* styles/global.css
-   Estilos mínimos para ver bien la demo de la entrega 2 sin tocar tu CSS existente.
-   Si ya tenés estilos, podés ajustar nombres de clase o ignorar este archivo. */
-*{box-sizing:border-box}body{margin:0;font-family:system-ui,Segoe UI,Roboto,Arial;background:#0f172a;color:#e2e8f0}
-a{color:inherit;text-decoration:none}
-.header{display:flex;align-items:center;justify-content:space-between;padding:12px 20px;background:#111827;position:sticky;top:0}
-.brand{font-weight:700;font-size:18px}
-.nav{display:flex;gap:12px;flex-wrap:wrap}
-.nav a{padding:6px 10px;border-radius:10px;background:#1f2937}
-.nav a.active{background:#2563eb}
-.container{max-width:1024px;margin:0 auto;padding:20px}
-.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:16px}
-.card{background:#111827;border:1px solid #1f2937;border-radius:14px;overflow:hidden}
-.card img{width:100%;height:160px;object-fit:cover;display:block}
-.card .body{padding:12px}
-.card h3{margin:0 0 6px;font-size:16px}
-.price{font-weight:700}
-.badge{font-size:12px;background:#0ea5e9;color:#0b1220;border-radius:999px;padding:2px 8px}
-.btn{display:inline-flex;align-items:center;gap:6px;padding:8px 12px;border-radius:10px;background:#2563eb;border:none;color:white;cursor:pointer}
-.btn:disabled{opacity:.6;cursor:not-allowed}
-.count{display:flex;align-items:center;gap:10px;margin-top:10px}
-.count button{width:28px;height:28px;border-radius:8px;border:none;background:#334155;color:#e2e8f0;cursor:pointer}
-.count .qty{min-width:28px;text-align:center}
-.footer{opacity:.7;text-align:center;padding:20px}
+/* src/styles/global.css */
+:root {
+   --bg: #0c0c0d;
+   --panel: #121214;
+   --muted: #1b1b1f;
+   --text: #f2f2f3;
+   --subtext: #b6b6b9;
+   --accent: #4ade80;
+   --border: #232327;
+ }
+ 
+ * { box-sizing: border-box; }
+ html, body, #root { height: 100%; }
+ body {
+   margin: 0;
+   font-family: Inter, system-ui, Segoe UI, Roboto, Arial, sans-serif;
+   background: radial-gradient(1200px 600px at 10% -10%, #141418, transparent),
+               radial-gradient(1200px 600px at 100% 10%, #101015, transparent),
+               var(--bg);
+   color: var(--text);
+ }
+ 
+ /* Navbar */
+ .navbar {
+   position: sticky; top: 0; z-index: 20;
+   display: flex; align-items: center; justify-content: space-between;
+   gap: 16px; padding: 14px 18px; background: rgba(12,12,13,.7);
+   backdrop-filter: blur(10px); border-bottom: 1px solid var(--border);
+ }
+ .navbar-title a { font-weight: 800; font-size: 1.05rem; letter-spacing: .2px; }
+ .navbar nav { display: flex; gap: 8px; flex-wrap: wrap; }
+ .navbar nav a {
+   padding: 6px 10px; border: 1px solid var(--border); border-radius: 999px;
+   color: var(--subtext);
+ }
+ .navbar nav a:hover { border-color: var(--accent); color: var(--text); }
+ .navbar nav a.active { border-color: var(--accent); box-shadow: 0 0 0 2px rgba(74,222,128,.15) inset; color: var(--text); }
+ 
+ /* Contenedor principal */
+ main { max-width: 1100px; margin: 0 auto; padding: 18px; }
+ 
+ /* Grid catálogo */
+ .grid {
+   display: grid; gap: 16px;
+   grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+ }
+ 
+ /* Card del producto */
+ .card {
+   background: var(--panel); border: 1px solid var(--border); border-radius: 16px;
+   overflow: hidden; transition: transform .15s ease, box-shadow .2s ease, border-color .2s ease;
+ }
+ .card:hover { transform: translateY(-1px); border-color: #2a2a31; box-shadow: 0 8px 20px rgba(0,0,0,.25); }
+ .card-img {
+   width: 100%; aspect-ratio: 4/5; object-fit: cover; display: block; background: #0f0f12;
+ }
+ .card-body { padding: 12px; display: grid; gap: 6px; }
+ .card-title { font-weight: 700; }
+ .card-sub { color: var(--subtext); font-size: .9rem; }
+ .price { font-weight: 800; }
+ 
+ /* Botón */
+ .btn {
+   appearance: none; cursor: pointer; border: 1px solid var(--border);
+   background: linear-gradient(180deg, #1a1a1f, #141417); color: var(--text);
+   padding: 8px 12px; border-radius: 10px; font-weight: 700;
+ }
+ .btn.primary { background: linear-gradient(180deg, #57f28d, #2db76b); color:#06210f; border-color: #2bb765; }
+ 
+ /* Detalle */
+ .detail { display: grid; grid-template-columns: 1.1fr 1fr; gap: 24px; align-items: start; }
+ .detail img { width: 100%; border-radius: 16px; border:1px solid var(--border); background:#0d0d0f; }
+ .badge { display:inline-block; padding:4px 10px; border:1px solid var(--border); border-radius:999px; color:var(--subtext); margin:6px 0 8px; }
+ 
+ @media (max-width: 880px) {
+   .detail { grid-template-columns: 1fr; }
+ }
+ 
+ /* Skeleton loader simple */
+ .skel {
+   border-radius: 14px; background:
+     linear-gradient(90deg, #111114, #18181d, #111114);
+   background-size: 200% 100%; animation: shimmer 1.4s infinite;
+   border: 1px solid var(--border);
+ }
+ @keyframes shimmer { 0% { background-position: 200% 0 } 100% { background-position: -200% 0 } }
+ 
+ .empty { color: var(--subtext); padding: 16px; border:1px dashed var(--border); border-radius: 12px; }
+ /* ---- NavBar title ---- */
+.navbar-title a {
+   color: inherit;          
+   text-decoration: none;   
+   font-weight: 800;        
+   font-size: 1.1rem;       
+ }
+ 
+ 

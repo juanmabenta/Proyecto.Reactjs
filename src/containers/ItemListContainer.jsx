@@ -18,18 +18,48 @@ export default function ItemListContainer({ greeting }) {
     const fetcher = categoryId ? getProductsByCategory(categoryId) : getProducts()
 
     fetcher
-      .then(res => { if (active) setItems(res) })
-      .catch(err => { if (active) setError(err.message) })
-      .finally(() => { if (active) setLoading(false) })
+      .then(res => {
+        if (active) setItems(res)
+      })
+      .catch(err => {
+        if (active) setError(err.message)
+      })
+      .finally(() => {
+        if (active) setLoading(false)
+      })
 
-    return () => { active = false }
+    return () => {
+      active = false
+    }
   }, [categoryId])
 
-  if (loading) return <p style={{ padding: 16 }}>Cargando productos...</p>
-  if (error) return <p style={{ padding: 16, color: 'tomato' }}>Error: {error}</p>
+  // ⏳ Loader con skeletons
+  if (loading) {
+    return (
+      <main>
+        {greeting && <h2>{greeting}</h2>}
+        {categoryId && <h3>Categoría: {categoryId}</h3>}
+        <div className="grid">
+          {Array.from({ length: 8 }).map((_, i) => (
+            <div className="skel" key={i} style={{ height: 320 }} />
+          ))}
+        </div>
+      </main>
+    )
+  }
 
+  // ❌ Error
+  if (error) {
+    return (
+      <main>
+        <p style={{ padding: 16, color: 'tomato' }}>Error: {error}</p>
+      </main>
+    )
+  }
+
+  // ✅ Listado
   return (
-    <main style={{ padding: 20 }}>
+    <main>
       {greeting && <h2>{greeting}</h2>}
       {categoryId && <h3>Categoría: {categoryId}</h3>}
       <ItemList products={items} />

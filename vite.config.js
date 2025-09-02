@@ -1,8 +1,9 @@
+// vite.config.js
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
 
-// ✅ Agregá la propiedad "base"
 export default defineConfig({
   plugins: [react()],
-  base: '/Proyecto.Reactjs/',
+  // 👇 cambia el nombre según tu repo exacto en GitHub
+  base: '/proyecto-reactjs/',
 })
